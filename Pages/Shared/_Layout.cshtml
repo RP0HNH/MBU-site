@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - МБУ Южное</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MBU_site.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <img src="~/222.png" alt="МБУ Южное" width="140" height="140" class="d-inline-block align-text-top me-2">
+                    «МБУ Южное»
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Index" ? "active" : "")" asp-area="" asp-page="/Index">
+                                <i class="fas fa-home me-1"></i> Главная
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/About" ? "active" : "")" asp-area="" asp-page="/About">
+                                <i class="fas fa-info-circle me-1"></i> О компании
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Documentation" ? "active" : "")" asp-area="" asp-page="/Documentation">
+                                <i class="fas fa-folder-open me-1"></i> Документация
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Contacts" ? "active" : "")" asp-area="" asp-page="/Contacts">
+                                <i class="fas fa-address-book me-1"></i> Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @if (ViewContext.RouteData.Values["Page"]?.ToString() == "/Index")
+    {
+        <div class="hero-section">
+            <div class="container text-center">
+                <h1 class="display-4 mb-3">МБУ Южное</h1>
+                <p class="lead mb-4">Надежность и качество в каждом проекте</p>
+                <a href="#services" class="btn btn-light btn-lg">Наши услуги</a>
+            </div>
+        </div>
+    }
+
+    <main role="main" class="flex-grow-1">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="copyright">
+                    &copy; @DateTime.Now.Year - «МБУ Южное». Все права защищены.
+                </div>
+                <div class="footer-links">
+                    <a asp-area="" asp-page="/Index">Главная</a>
+                    <a asp-area="" asp-page="/About">О компании</a>
+                    <a asp-area="" asp-page="/Documentation">Документация</a>
+                    <a asp-area="" asp-page="/Contacts">Контакты</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Активное состояние пунктов меню
+        $(document).ready(function() {
+            var currentPage = '@ViewContext.RouteData.Values["Page"]';
+            $('.nav-link').each(function() {
+                var linkPage = $(this).attr('href').replace('/', '');
+                if (linkPage && currentPage.includes(linkPage)) {
+                    $(this).addClass('active');
+                }
+            });
+
+            // Плавная прокрутка для якорных ссылок
+            $('a[href^="#"]').on('click', function(e) {
+                if (this.hash !== "") {
+                    e.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 70
+                    }, 800);
+                }
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
