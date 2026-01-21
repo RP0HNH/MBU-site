@@ -28,14 +28,30 @@
                                 <i class="fas fa-home me-1"></i> Главная
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/About" ? "active" : "")" asp-area="" asp-page="/About">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["Page"]?.ToString() == "/About/About" ? "active" : "")" 
+                               href="#" 
+                               id="aboutDropdown" 
+                               role="button" 
+                               data-bs-toggle="dropdown" 
+                               aria-expanded="false">
                                 <i class="fas fa-info-circle me-1"></i> О компании
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-page="/About/About"><i class="fas fa-users me-2"></i>О нас</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/About/Management"><i class="fas fa-user-tie me-2"></i>Руководство</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/About/Equipment"><i class="fas fa-truck me-2"></i>Наша техника</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/About/Vacancies"><i class="fas fa-briefcase me-2"></i>Вакансии</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Services" ? "active" : "")" asp-area="" asp-page="/Services">
+                                <i class="fas fa-info-circle me-1"></i> Услуги
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Documentation" ? "active" : "")" asp-area="" asp-page="/Documentation">
-                                <i class="fas fa-folder-open me-1"></i> Документация
+                            <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/News" ? "active" : "")" asp-area="" asp-page="/News">
+                                <i class="fas fa-folder-open me-1"></i> Новости
                             </a>
                         </li>
                         <li class="nav-item">
@@ -49,15 +65,6 @@
         </nav>
     </header>
 
-    @if (ViewContext.RouteData.Values["Page"]?.ToString() == "/Index")
-    {
-        <div class="hero-section">
-            <div class="container text-center">
-                <h1 class="display-4 mb-3">МБУ Южное</h1>
-                <p class="lead mb-4">Надежность и качество в каждом проекте</p>
-                <a href="#services" class="btn btn-light btn-lg">Наши услуги</a>
-            </div>
-        </div>
     }
 
     <main role="main" class="flex-grow-1">
@@ -74,6 +81,7 @@
                 </div>
                 <div class="footer-links">
                     <a asp-area="" asp-page="/Index">Главная</a>
+                    <a asp-area="" asp-page="/Services">Услуги</a>
                     <a asp-area="" asp-page="/About">О компании</a>
                     <a asp-area="" asp-page="/Documentation">Документация</a>
                     <a asp-area="" asp-page="/Contacts">Контакты</a>
@@ -92,23 +100,15 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
-        // Активное состояние пунктов меню
+        // Плавная прокрутка для якорных ссылок
         $(document).ready(function() {
-            var currentPage = '@ViewContext.RouteData.Values["Page"]';
-            $('.nav-link').each(function() {
-                var linkPage = $(this).attr('href').replace('/', '');
-                if (linkPage && currentPage.includes(linkPage)) {
-                    $(this).addClass('active');
-                }
-            });
-
-            // Плавная прокрутка для якорных ссылок
             $('a[href^="#"]').on('click', function(e) {
                 if (this.hash !== "") {
                     e.preventDefault();
                     var hash = this.hash;
+                    var headerHeight = $('.navbar').outerHeight();
                     $('html, body').animate({
-                        scrollTop: $(hash).offset().top - 70
+                        scrollTop: $(hash).offset().top - headerHeight
                     }, 800);
                 }
             });
