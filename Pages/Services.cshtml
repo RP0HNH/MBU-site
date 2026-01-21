@@ -1,0 +1,354 @@
+﻿@page
+@model MBU_site.Pages.ServicesModel
+@{
+    ViewData["Title"] = "Услуги";
+}
+
+<div class="services-page">
+    <h1 class="page-title">Услуги</h1>
+
+    <div class="services-container">
+        <!-- Услуга 1 -->
+        <div class="service-card" onclick="toggleServiceDetails(1)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/asphalt-production.png" alt="Производство асфальтобетонной смеси"
+                         onerror="this.src='https://via.placeholder.com/80/3498db/ffffff?text=A';">
+                </div>
+                <h2 class="service-name">Производство и продажа асфальтобетонной смеси</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-1">
+                <div class="service-content">
+                    <p>Мы производим высококачественную асфальтобетонную смесь различных марок, соответствующую всем ГОСТам и техническим требованиям. Современное оборудование позволяет нам гарантировать стабильное качество продукции.</p>
+                    <ul>
+                        <li>Асфальтобетонная смесь типа А, Б, В</li>
+                        <li>Литой асфальтобетон</li>
+                        <li>Цветной асфальтобетон</li>
+                        <li>Доставка собственным транспортом</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 2 -->
+        <div class="service-card" onclick="toggleServiceDetails(2)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/asphalt-laying.png" alt="Укладка асфальтобетона"
+                         onerror="this.src='https://via.placeholder.com/80/2ecc71/ffffff?text=U';">
+                </div>
+                <h2 class="service-name">Выполнение работ по укладке асфальтобетона</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-2">
+                <div class="service-content">
+                    <p>На всех современных трассах в качестве дорожного покрытия используют асфальт. Благодаря своим физико-химическим свойствам и особенностям этот материал с каждым годом приобретает всё большую популярность. Асфальтированные дороги износоустойчивы и стойки к капризам природы.</p>
+                    <p>Мы выполняем работы любой сложности:</p>
+                    <ul>
+                        <li>Устройство дорожных покрытий</li>
+                        <li>Ямочный ремонт</li>
+                        <li>Асфальтирование дворовых территорий</li>
+                        <li>Восстановление дорожного полотна</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 3 -->
+        <div class="service-card" onclick="toggleServiceDetails(3)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/territory-cleaning.png" alt="Очистка территорий"
+                         onerror="this.src='https://via.placeholder.com/80/e74c3c/ffffff?text=C';">
+                </div>
+                <h2 class="service-name">Выполнение работ по очистке территорий от песчано-грунтовых наносов</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-3">
+                <div class="service-content">
+                    <p>Профессиональная очистка территорий от песчаных и грунтовых наносов с использованием современной специализированной техники. Обеспечиваем полную уборку и вывоз материалов.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 4 -->
+        <div class="service-card" onclick="toggleServiceDetails(4)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/street-cleaning.png" alt="Подметание и мойка"
+                         onerror="this.src='https://via.placeholder.com/80/f39c12/ffffff?text=S';">
+                </div>
+                <h2 class="service-name">Выполнение работ по механизированному подметанию и мойке территорий</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-4">
+                <div class="service-content">
+                    <p>Комплексная уборка городских территорий с использованием подметально-уборочных машин и моечного оборудования. Поддерживаем чистоту дорог, тротуаров и общественных пространств.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 5 -->
+        <div class="service-card" onclick="toggleServiceDetails(5)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/drainage.png" alt="Ливневая канализация"
+                         onerror="this.src='https://via.placeholder.com/80/9b59b6/ffffff?text=D';">
+                </div>
+                <h2 class="service-name">Прочистка сетей ливневой канализации</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-5">
+                <div class="service-content">
+                    <p>Профессиональная прочистка и обслуживание ливневых канализационных сетей. Предотвращаем затопления и обеспечиваем нормальный водоотвод.</p>
+                    <div class="service-price">
+                        <strong>Цена договорная</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 6 -->
+        <div class="service-card" onclick="toggleServiceDetails(6)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/special-equipment.png" alt="Спецтехника"
+                         onerror="this.src='https://via.placeholder.com/80/1abc9c/ffffff?text=E';">
+                </div>
+                <h2 class="service-name">Оказание услуг по предоставлению специализированной техники</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-6">
+                <div class="service-content">
+                    <p>Предоставляем в аренду современную специализированную технику с опытными операторами для выполнения различных работ.</p>
+                    <div class="service-price">
+                        <strong>Цена из расчета стоимости оказания услуг по работе специализированных машин на 2019 г.</strong>
+                    </div>
+                    <p>В нашем парке:</p>
+                    <ul>
+                        <li>Асфальтоукладчики</li>
+                        <li>Катки дорожные</li>
+                        <li>Экскаваторы и погрузчики</li>
+                        <li>Подметально-уборочные машины</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Услуга 7 -->
+        <div class="service-card" onclick="toggleServiceDetails(7)">
+            <div class="service-header">
+                <div class="service-icon">
+                    <img src="~/images/services/lighting.png" alt="Освещение"
+                         onerror="this.src='https://via.placeholder.com/80/34495e/ffffff?text=L';">
+                </div>
+                <h2 class="service-name">Строительство линий наружного освещения, светофорных объектов</h2>
+                <span class="service-toggle">Подробнее <i class="arrow">↓</i></span>
+            </div>
+            <div class="service-details" id="service-details-7">
+                <div class="service-content">
+                    <p>Проектирование, монтаж и обслуживание систем наружного освещения и светофорных объектов. Обеспечиваем безопасность дорожного движения.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    /* Остальные стили остаются без изменений */
+    .services-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .service-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+        .service-card:hover {
+            border-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-card.active {
+            border-color: #3498db;
+        }
+
+    .service-header {
+        display: flex;
+        align-items: center;
+        padding: 25px;
+        gap: 25px;
+        position: relative;
+    }
+
+    .service-icon {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+        .service-icon img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+    .service-name {
+        flex: 1;
+        margin: 0;
+        color: #2c3e50;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .service-toggle {
+        color: #3498db;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #ebf5fb;
+        transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-toggle {
+        background: #3498db;
+        color: white;
+    }
+
+    .arrow {
+        transition: transform 0.3s ease;
+        font-size: 0.9em;
+    }
+
+    .service-card.active .arrow {
+        transform: rotate(180deg);
+    }
+
+    .service-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #f8f9fa;
+    }
+
+    .service-card.active .service-details {
+        max-height: 1000px;
+    }
+
+    .service-content {
+        padding: 0 25px 25px 130px;
+        color: #34495e;
+        line-height: 1.7;
+    }
+
+        .service-content p {
+            margin-bottom: 15px;
+        }
+
+        .service-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .service-content li {
+            margin-bottom: 8px;
+        }
+
+    .service-price {
+        margin: 20px 0;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        border-left: 4px solid #2ecc71;
+        font-size: 1.1rem;
+    }
+
+    @@media (max-width: 768px) {
+        .services-page {
+            padding: 80px 15px 30px; /* Меньший отступ на мобильных */
+        }
+
+        .service-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .service-content {
+            padding: 0 20px 20px 20px;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .service-name {
+            font-size: 1.2rem;
+        }
+
+        .services-title {
+            font-size: 2rem;
+            padding-top: 10px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .services-page {
+            padding: 70px 10px 20px;
+        }
+
+        .services-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+<script>
+    function toggleServiceDetails(serviceNumber) {
+        const card = event.currentTarget;
+        const details = document.getElementById(`service-details-${serviceNumber}`);
+
+        // Закрываем все другие открытые блоки
+        document.querySelectorAll('.service-card.active').forEach(activeCard => {
+            if (activeCard !== card) {
+                activeCard.classList.remove('active');
+                const activeDetails = activeCard.querySelector('.service-details');
+                activeDetails.style.maxHeight = '0';
+            }
+        });
+
+        // Переключаем текущий блок
+        card.classList.toggle('active');
+
+        if (card.classList.contains('active')) {
+            details.style.maxHeight = details.scrollHeight + 'px';
+        } else {
+            details.style.maxHeight = '0';
+        }
+    }
+</script>

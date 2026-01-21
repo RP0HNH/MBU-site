@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MBU_site.Pages
 {
-    public class DocumentationModel : PageModel
+    public class ServicesModel : PageModel
     {
         public void OnGet()
         {
