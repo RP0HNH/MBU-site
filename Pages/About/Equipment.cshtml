@@ -1,0 +1,355 @@
+﻿@page
+@model MBU_site.Pages.About.EquipmentModel
+@{
+    ViewData["Title"] = "Парк техники и оборудования";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+<!-- Добавим Font Awesome для большего выбора иконок -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="container">
+    <h1 class="page-title">Наш парк техники и оборудования</h1>
+    <p class="lead text-center mb-5">Современный, разнообразный и технически оснащенный парк для решения любых задач</p>
+
+    <!-- Общая статистика -->
+    <div class="row mb-5">
+        <div class="col-md-8 mx-auto">
+            <div class="stats-card text-center p-4 rounded-3 shadow">
+                <div class="stats-icon mb-3">
+                    <i class="fas fa-truck-moving" style="font-size: 3rem; color: #2c3e50;"></i>
+                </div>
+                <h3 class="stats-number">201</h3>
+                <p class="stats-label">единиц техники в парке</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Категории техники -->
+    <div class="row g-4">
+        <!-- Автомобильная техника -->
+        <div class="col-lg-4">
+            <div class="equipment-category card h-100 shadow border-0">
+                <div class="card-header category-header bg-primary text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-truck-pickup me-3" style="font-size: 1.5rem;"></i>
+                        <h4 class="mb-0">Автомобильная техника</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="category-stats mb-4">
+                        <span class="badge bg-primary fs-5 p-3">127 ед.</span>
+                    </div>
+
+                    <div class="equipment-items">
+                        <div class="equipment-item d-flex align-items-center mb-3">
+                            <div class="equipment-icon me-3">
+                                <i class="fas fa-truck-loading" style="font-size: 1.2rem; color: #3498db;"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="fw-bold">Грузовые автомобили</span>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <span class="badge bg-light text-dark ms-2">102</span>
+                        </div>
+
+                        <div class="equipment-item d-flex align-items-center mb-3">
+                            <div class="equipment-icon me-3">
+                                <i class="fas fa-car" style="font-size: 1.2rem; color: #2ecc71;"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span>Легковые автомобили</span>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 17%"></div>
+                                </div>
+                            </div>
+                            <span class="badge bg-light text-dark ms-2">21</span>
+                        </div>
+
+                        <div class="equipment-item d-flex align-items-center mb-3">
+                            <div class="equipment-icon me-3">
+                                <i class="fas fa-bus" style="font-size: 1.2rem; color: #e74c3c;"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span>Автобусы</span>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <span class="badge bg-light text-dark ms-2">13</span>
+                        </div>
+
+                        <div class="equipment-item d-flex align-items-center mb-3">
+                            <div class="equipment-icon me-3">
+                                <i class="fas fa-trailer" style="font-size: 1.2rem; color: #9b59b6;"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span>Прицепное оборудование</span>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar" style="background-color: #9b59b6; width: 8%"></div>
+                                </div>
+                            </div>
+                            <span class="badge bg-light text-dark ms-2">10</span>
+                        </div>
+                    </div>
+
+                    <div class="special-note mt-3 p-2 bg-light rounded">
+                        <small><i class="fas fa-info-circle me-1"></i> Включая <strong>ГАЗели</strong> на газомоторном топливе</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Специализированная дорожная техника -->
+        <div class="col-lg-4">
+            <div class="equipment-category card h-100 shadow border-0">
+                <div class="card-header category-header bg-warning text-dark">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-tools me-3" style="font-size: 1.5rem;"></i>
+                        <h4 class="mb-0">Специализированная дорожная техника</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="category-stats mb-4">
+                        <span class="badge bg-warning text-dark fs-5 p-3">45 ед.</span>
+                    </div>
+
+                    <div class="equipment-icons-grid mb-4">
+                        <div class="text-center">
+                            <div class="icon-circle mb-2 mx-auto">
+                                <i class="fas fa-tractor" style="font-size: 1.5rem; color: #d35400;"></i>
+                            </div>
+                            <span class="d-block">Трактора</span>
+                            <strong>14</strong>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-circle mb-2 mx-auto">
+                                <i class="fas fa-bullseye" style="font-size: 1.5rem; color: #d35400;"></i>
+                            </div>
+                            <span class="d-block">Бульдозеры</span>
+                            <strong>6</strong>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-circle mb-2 mx-auto">
+                                <i class="fas fa-sliders-h" style="font-size: 1.5rem; color: #d35400;"></i>
+                            </div>
+                            <span class="d-block">Автогрейдеры</span>
+                            <strong>5</strong>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-circle mb-2 mx-auto">
+                                <i class="fas fa-digging" style="font-size: 1.5rem; color: #d35400;"></i>
+                            </div>
+                            <span class="d-block">Экскаваторы</span>
+                            <strong>7</strong>
+                        </div>
+                        <div class="text-center">
+                            <div class="icon-circle mb-2 mx-auto">
+                                <i class="bi bi-arrow-left-right" style="font-size: 1.5rem; color: #d35400;"></i>
+                            </div>
+                            <span class="d-block">Погрузчики</span>
+                            <strong>13</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дорожно-строительная техника -->
+        <div class="col-lg-4">
+            <div class="equipment-category card h-100 shadow border-0">
+                <div class="card-header category-header bg-success text-white">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-hard-hat me-3" style="font-size: 1.5rem;"></i>
+                        <h4 class="mb-0">Дорожно-строительная техника</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="category-stats mb-4">
+                        <span class="badge bg-success fs-5 p-3">29 ед.</span>
+                    </div>
+                    <div class="equipment-list">
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>Мотокатки</span>
+                            <span class="badge bg-success rounded-pill">13</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>Асфальтоукладчики</span>
+                            <span class="badge bg-success rounded-pill">4</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>Фреза дорожная</span>
+                            <span class="badge bg-success rounded-pill">2</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>Чистодор</span>
+                            <span class="badge bg-success rounded-pill">3</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2 border-bottom">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>МКСМ</span>
+                            <span class="badge bg-success rounded-pill">2</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 p-2">
+                            <span><i class="bi bi-circle-fill me-2" style="color: #2ecc71; font-size: 0.5rem;"></i>Компрессоры</span>
+                            <span class="badge bg-success rounded-pill">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .page-title {
+        margin-bottom: 30px;
+        color: #2c3e50;
+        font-weight: 700;
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #3498db;
+    }
+
+    .stats-card {
+        background: #f8f9fa;
+        color: white;
+    }
+
+    .stats-number {
+        font-size: 4rem;
+        font-weight: 800;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .stats-label {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin: 0;
+    }
+
+    .equipment-category {
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+        .equipment-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+    .category-header {
+        padding: 1.5rem;
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .equipment-items {
+        margin-top: 1rem;
+    }
+
+    .equipment-item {
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+
+        .equipment-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+
+    .equipment-icons-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #f39c12;
+        background-color: rgba(243, 156, 18, 0.1);
+        transition: all 0.3s ease;
+        margin: 0 auto;
+    }
+
+        .icon-circle:hover {
+            transform: scale(1.1);
+            background-color: rgba(243, 156, 18, 0.2);
+        }
+
+    .progress {
+        background-color: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 10px;
+    }
+
+    .progress-bar {
+        background-color: #3498db;
+        border-radius: 10px;
+    }
+
+    .brand-logo {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: white;
+        border: 2px solid #e9ecef;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .brand-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+            border-color: #3498db;
+        }
+
+    .brand-name {
+        font-weight: 700;
+        color: #2c3e50;
+        font-size: 0.9rem;
+    }
+
+    .special-note {
+        font-size: 0.9rem;
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        border-left: 4px solid #3498db;
+    }
+
+    .equipment-list .border-bottom {
+        border-color: #dee2e6 !important;
+    }
+
+    /* Адаптивность */
+    @@media (max-width: 768px) {
+        .stats-number {
+            font-size: 3rem;
+        }
+
+        .equipment-icons-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+        }
+
+        .brand-logo {
+            padding: 1rem;
+        }
+    }
+</style>
