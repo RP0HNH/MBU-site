@@ -712,3 +712,42 @@ h3 {
             padding: 0.6rem 0;
         }
 }
+/* ===== РУКОВОДСТВО ===== */
+.management-card {
+    overflow: hidden;
+}
+
+.management-role {
+    height: 6px;
+    width: 100%;
+}
+
+/* Цвета ролей */
+.role-director {
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.role-finance {
+    background: linear-gradient(90deg, #27ae60, #1e8449);
+}
+
+.role-tech {
+    background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+.role-production {
+    background: linear-gradient(90deg, #f39c12, #d68910);
+}
+
+.role-safety {
+    background: linear-gradient(90deg, #8e44ad, #6c3483);
+}
+
+.management-photo {
+    width: 100%;
+    height: 260px; /* высота окна */
+    object-fit: contain; /* ВАЖНО: вписывает изображение целиком */
+    background-color: #ffffff;
+    display: block;
+}
+

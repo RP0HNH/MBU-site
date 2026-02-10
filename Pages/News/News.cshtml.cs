@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MBU_site.Pages
+namespace MBU_site.Pages.News
 {
     public class NewsModel : PageModel
     {
