@@ -4,8 +4,38 @@
     ViewData["Title"] = "Главная";
 }
 
-<!-- О компании на главной -->
+<!-- Кнопка ГЛОНАСС мониторинга -->
 <section class="mt-5 pt-5">
+    <div class="container-fluid px-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card glonass-card">
+                    <div class="card-body glonass-card-content">
+                        <div class="glonass-icon-wrapper">
+                            <i class="fas fa-satellite-dish fa-3x text-white"></i>
+                        </div>
+                        <div class="glonass-text">
+                            <h3 class="text-white mb-2">Спутниковый мониторинг транспорта</h3>
+                            <p class="text-white-50 mb-0">Отслеживайте работу нашей спецтехники в режиме реального времени</p>
+                        </div>
+                        <form method="post" asp-page-handler="GlonassRedirect" id="glonassForm">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-light btn-glonass" id="glonassBtn">
+                                <span id="btnText">Перейти к мониторингу</span>
+                                <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- О компании на главной -->
+<section class="mt-4 pt-2">
     <div class="container-fluid px-4">
         <h1>О компании</h1>
         <p>Муниципальное бюджетное учреждение "Южное" образовано путем реорганизации  Муниципального унитарного предприятия дорожно-строительных и эксплуатационных работ Советского района г.Волгограда (МУП ДСЭР) с 13 августа 2024 года в соответствии с Постановлением администрации Волгограда от 25.06.2024  № 678. Сегодня МБУ является крупным учреждением, выполняющим комплекс работ по содержанию, обслуживанию, ремонту автомобильных дорог 4-х «южных» районов города – Ворошиловского, Советского, Кировского, Красноармейского. Для реализации этих  целей учреждение располагает двумя  производственными базами с современной специальной техникой, асфальтобетонным заводом, производственной лабораторией, высоко профессиональным персоналом,  что позволяет МБУ «Южное» обеспечивать выполнение необходимых работ на  должном качественном уровне. Благодаря поддержки администрации области и города наш парк специальной техники за последние два года существенно обновился и на дорогах города работает современная подметально - уборочная техника.</p>
@@ -142,32 +172,13 @@
     </div>
 </section>
 
-<style>
-    .card {
-        transition: transform 0.3s ease;
-        border-radius: 10px;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .text-teal {
-        color: #20c997;
-    }
-
-    .text-purple {
-        color: #6f42c1;
-    }
-</style>
-
 <!-- Информация для жителей -->
 <section class="py-5">
     <div class="container">
         <h2 class="text-center mb-4">Информация для жителей</h2>
 
         <div style="
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                         url('/icon1.jpg') center/cover no-repeat;
             color: white;
             padding: 40px 30px;
@@ -206,7 +217,7 @@
             </div>
 
             <p style="font-size: 16px; line-height: 1.6; font-style: italic; margin-top: 20px;">
-                <i class="fas fa-heart me-2"></i>Надеемся на Вашу помощь, своевременное и по существу информирование 
+                <i class="fas fa-heart me-2"></i>Надеемся на Вашу помощь, своевременное и по существу информирование
                 о состоянии дорог и улиц, для принятия оперативных мер по обеспечению чистоты, порядка и безопасности.
             </p>
         </div>
@@ -374,17 +385,145 @@
     </div>
 </section>
 
+<!-- Добавляем минимальные дополнительные стили для кнопки ГЛОНАСС -->
 <style>
-    section:first-of-type {
-        margin-top: 100px;
+    /* Дополнительные стили для карточки ГЛОНАСС */
+    .glonass-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none !important;
+        box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3) !important;
+        animation: fadeInUp 0.8s ease;
     }
 
-    .map-container {
-        height: 450px;
+    .glonass-card-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
     }
 
-    .map-container iframe {
-        width: 100%;
-        height: 100%;
+    .glonass-icon-wrapper {
+        background: rgba(255, 255, 255, 0.2);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 2s infinite;
+    }
+
+    .glonass-text {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .btn-glonass {
+        background: white !important;
+        color: #764ba2 !important;
+        border: none !important;
+        padding: 15px 35px !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+        .btn-glonass:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2) !important;
+            background: #f8f9fa !important;
+        }
+
+        .btn-glonass:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+    .spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(118, 75, 162, 0.3);
+        border-radius: 50%;
+        border-top-color: #764ba2;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    /* Исправлено: keyframes без отступа */
+    @@keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+        }
+
+        70% {
+            box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+        }
+
+        100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        }
+    }
+
+    /* Адаптивность для мобильных устройств */
+    @@media (max-width: 768px) {
+        .glonass-card-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .glonass-text h3 {
+            font-size: 20px;
+        }
+
+        .btn-glonass {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .text-white-50 {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 </style>
+
+<!-- JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('glonassForm');
+        const btn = document.getElementById('glonassBtn');
+        const btnText = document.getElementById('btnText');
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // Меняем текст кнопки на время загрузки
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner"></span>Подключение...';
+
+                // Разрешаем отправку формы
+                return true;
+            });
+        }
+    });
+</script>
