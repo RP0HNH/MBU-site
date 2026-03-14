@@ -8,90 +8,184 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MBU_site.styles.css" asp-append-version="true" />
+    <style>
+        /* Глобальные переменные */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --content-max-width: 1200px;
+        }
+
+        body {
+            padding-top: 150px;
+            margin: 0;
+        }
+
+        /* Контейнер для контента - суженный */
+        .content-container {
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        /* Хедер на всю ширину */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+
+        /* Для страниц используем суженный контейнер */
+        main {
+            width: 100%;
+        }
+
+            main .content-container {
+                max-width: var(--content-max-width);
+                margin: 0 auto;
+                padding: 20px 15px;
+            }
+
+        /* Переопределяем стандартные container в хедере на полную ширину */
+        header .container {
+            max-width: 100%;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <!-- Верхняя информационная полоса - на всю ширину -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="top-bar-info">
+                        <span><i class="fas fa-phone-alt"></i> 46-99-51</span>
+                        <span class="separator">|</span>
+                        <span><i class="fas fa-envelope"></i> mbu-yuzhnoe@yandex.ru</span>
+                        <span class="separator">|</span>
+                        <span><i class="fas fa-map-marker-alt"></i> г. Волгоград, ул. Криворожская, 2Г</span>
+                        <span class="separator">|</span>
+                        <span><i class="fas fa-map-marker-alt"></i> г. Волгоград, ул. Липецкая, 7</span>
+                        <span class="separator">|</span>
+                        <span><i class="fas fa-map-marker-alt"></i> г. Волгоград, ул. Песчаная, 2б</span>
+                    </div>
+                    <!-- МЕССЕНДЖЕРЫ УДАЛЕНЫ -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Основная навигация - на всю ширину -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
-                    <img src="~/222.png" alt="МБУ Южное" width="140" height="140" class="d-inline-block align-text-top me-2">
-                    «МБУ Южное»
+                    <div class="brand-wrapper">
+                        <div class="brand-logo-wrapper">
+                            <img src="~/222.png" alt="МБУ Южное" class="brand-logo">
+                            <div class="brand-logo-glow"></div>
+                        </div>
+                        <div class="brand-text">
+                            <span class="brand-name">МБУ «Южное»</span>
+                        </div>
+                    </div>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Index" ? "active" : "")" asp-area="" asp-page="/Index">
-                                <i class="fas fa-home me-1"></i> Главная
+                                <span class="nav-icon"><i class="fas fa-home"></i></span>
+                                <span class="nav-text">Главная</span>
                             </a>
                         </li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["Page"]?.ToString() == "/About/About" ? "active" : "")" 
-                               href="#" 
-                               id="aboutDropdown" 
-                               role="button" 
-                               data-bs-toggle="dropdown" 
+                            <a class="nav-link dropdown-toggle @(ViewContext.RouteData.Values["Page"]?.ToString().StartsWith("/About") == true ? "active" : "")"
+                               href="#"
+                               id="aboutDropdown"
+                               role="button"
+                               data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="fas fa-info-circle me-1"></i> О компании
+                                <span class="nav-icon"><i class="fas fa-building"></i></span>
+                                <span class="nav-text">О компании</span>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
-                                <li><a class="dropdown-item" asp-area="" asp-page="/About/About"><i class="fas fa-users me-2"></i>О нас</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="aboutDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-page="/About/About"><i class="fas fa-info-circle me-2"></i>О нас</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-page="/About/Management"><i class="fas fa-user-tie me-2"></i>Руководство</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-page="/About/Equipment"><i class="fas fa-truck me-2"></i>Наша техника</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-page="/About/Vacancies"><i class="fas fa-briefcase me-2"></i>Вакансии</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Services" ? "active" : "")" asp-area="" asp-page="/Services">
-                                <i class="fas fa-info-circle me-1"></i> Услуги
+                                <span class="nav-icon"><i class="fas fa-cogs"></i></span>
+                                <span class="nav-text">Услуги</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/News" ? "active" : "")" asp-area="" asp-page="/News/News">
-                                <i class="fas fa-folder-open me-1"></i> Новости
+                                <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
+                                <span class="nav-text">Новости</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link @(ViewContext.RouteData.Values["Page"]?.ToString() == "/Contacts" ? "active" : "")" asp-area="" asp-page="/Contacts">
-                                <i class="fas fa-address-book me-1"></i> Контакты
+                                <span class="nav-icon"><i class="fas fa-address-book"></i></span>
+                                <span class="nav-text">Контакты</span>
                             </a>
                         </li>
+
+                        <!-- КНОПКА ПОИСКА УДАЛЕНА -->
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <!-- СТРОКА ПОИСКА УДАЛЕНА ПОЛНОСТЬЮ -->
     </header>
 
-    }
-
     <main role="main" class="flex-grow-1">
-        <div class="container">
+        <div class="content-container">
             @RenderBody()
         </div>
     </main>
 
     <footer>
-        <div class="container">
+        <div class="content-container">
             <div class="footer-content">
                 <div class="copyright">
                     &copy; @DateTime.Now.Year - «МБУ Южное». Все права защищены.
                 </div>
                 <div class="footer-links">
                     <a asp-area="" asp-page="/Index">Главная</a>
+                    <span class="footer-separator">•</span>
                     <a asp-area="" asp-page="/Services">Услуги</a>
-                    <a asp-area="" asp-page="/About">О компании</a>
+                    <span class="footer-separator">•</span>
+                    <a asp-area="" asp-page="/About/About">О компании</a>
+                    <span class="footer-separator">•</span>
                     <a asp-area="" asp-page="/Documentation">Документация</a>
+                    <span class="footer-separator">•</span>
                     <a asp-area="" asp-page="/Contacts">Контакты</a>
                 </div>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                    <a href="#"><i class="fas fa-phone"></i></a>
-                </div>
+                <!-- СОЦИАЛЬНЫЕ ИКОНКИ В ФУТЕРЕ ТОЖЕ УДАЛЕНЫ -->
             </div>
         </div>
     </footer>
@@ -106,14 +200,415 @@
                 if (this.hash !== "") {
                     e.preventDefault();
                     var hash = this.hash;
-                    var headerHeight = $('.navbar').outerHeight();
+                    var headerHeight = $('.navbar').outerHeight() + $('.top-bar').outerHeight();
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top - headerHeight
                     }, 800);
                 }
             });
+
+            // Анимация скролла для хедера
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('navbar-scrolled');
+                    $('.top-bar').addClass('top-bar-hidden');
+                } else {
+                    $('.navbar').removeClass('navbar-scrolled');
+                    $('.top-bar').removeClass('top-bar-hidden');
+                }
+            });
+
+            // Подсветка активного пункта меню
+            var currentUrl = window.location.pathname;
+            $('.navbar-nav .nav-link').each(function() {
+                var linkUrl = $(this).attr('href');
+                if (linkUrl && currentUrl.indexOf(linkUrl) !== -1 && linkUrl !== '/') {
+                    $(this).addClass('active');
+                }
+            });
         });
     </script>
+
+    <style>
+        /* Верхняя информационная полоса */
+        .top-bar {
+            background: linear-gradient(135deg, #1a2634 0%, #2c3e50 100%);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1040;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .top-bar-hidden {
+            transform: translateY(-100%);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: center; /* Центрируем контент после удаления соцсетей */
+            align-items: center;
+        }
+
+        .top-bar-info span {
+            margin-right: 0.5rem;
+        }
+
+        .top-bar-info i {
+            color: var(--secondary-color);
+            margin-right: 0.3rem;
+            font-size: 0.85rem;
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.3);
+            margin: 0 0.5rem;
+        }
+
+        /* Навбар */
+        .navbar {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 1.2rem 0;
+            position: fixed;
+            top: 35px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar-scrolled {
+            top: 0 !important;
+            padding: 0.8rem 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #2980b9 100%);
+        }
+
+        /* Бренд с увеличенным логотипом */
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .brand-logo-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .brand-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            filter: brightness(1.2) drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo-glow {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: radial-gradient(circle, rgba(52,152,219,0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-brand:hover .brand-logo-glow {
+            opacity: 1;
+        }
+
+        .navbar-brand:hover .brand-logo {
+            transform: scale(1.08);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .brand-slogan {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        /* Навигационные ссылки */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.4rem !important;
+            margin: 0 0.2rem;
+            border-radius: 30px;
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .nav-link:before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: width 0.6s, height 0.6s;
+            }
+
+            .nav-link:hover:before {
+                width: 220px;
+                height: 220px;
+            }
+
+            .nav-link:hover {
+                color: white !important;
+                transform: translateY(-2px);
+            }
+
+            .nav-link.active {
+                background: rgba(255, 255, 255, 0.15);
+                color: white !important;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover .nav-icon {
+            transform: scale(1.2);
+            color: white;
+        }
+
+        .nav-link.active .nav-icon {
+            color: white;
+        }
+
+        /* Выпадающее меню */
+        .custom-dropdown {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 0.8rem 0;
+            margin-top: 0.5rem;
+            background: white;
+            animation: dropdownFade 0.3s ease;
+        }
+
+        @@keyframes dropdownFade {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            color: #333;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+            .dropdown-item i {
+                color: var(--secondary-color);
+                width: 20px;
+                transition: all 0.3s ease;
+            }
+
+            .dropdown-item:hover {
+                background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+                color: var(--primary-color);
+                padding-left: 2rem;
+            }
+
+                .dropdown-item:hover i {
+                    color: var(--accent-color);
+                    transform: scale(1.1);
+                }
+
+        .dropdown-divider {
+            margin: 0.5rem 0;
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Стили для контента */
+        main .content-container {
+            min-height: calc(100vh - 220px);
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a2634 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+            .footer-links a:hover {
+                color: var(--secondary-color);
+            }
+
+        .footer-separator {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Адаптивность */
+        @@media (max-width: 1200px) {
+            .brand-logo-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+
+            .brand-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .brand-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        @@media (max-width: 992px) {
+            body {
+                padding-top: 140px;
+            }
+
+            .top-bar-info span:not(:first-child) {
+                display: none;
+            }
+
+            .separator {
+                display: none;
+            }
+
+            .nav-link {
+                justify-content: flex-start;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-logo-wrapper {
+                width: 65px;
+                height: 65px;
+            }
+
+            .brand-logo {
+                width: 65px;
+                height: 65px;
+            }
+
+            .brand-name {
+                font-size: 1.4rem;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            body {
+                padding-top: 130px;
+            }
+
+            .brand-name {
+                font-size: 1.3rem;
+            }
+
+            .brand-slogan {
+                font-size: 0.75rem;
+            }
+
+            .top-bar {
+                font-size: 0.8rem;
+            }
+
+            .brand-logo-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            .brand-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            body {
+                padding-top: 120px;
+            }
+
+            .brand-logo-wrapper {
+                width: 55px;
+                height: 55px;
+            }
+
+            .brand-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
